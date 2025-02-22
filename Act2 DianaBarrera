@@ -1,0 +1,19 @@
+public class Main {
+    public static void main(String[] args) {
+        // Crear un objeto Producto
+        Producto laptop = new Producto("Laptop", 1200.5, 5);
+        
+        // Imprimir los detalles del producto
+        System.out.println("Nombre del Producto: " + laptop.nombre);
+        System.out.println("Precio: " + laptop.precio);
+        System.out.println("Cantidad Disponible: " + laptop.cantidad);
+        
+        // Calcular e imprimir el valor total del producto
+        double valorTotal = laptop.calcularValorTotal();
+        System.out.println("Valor Total del Producto: " + valorTotal);
+        
+        // Cambiar el precio y mostrar el nuevo precio
+        laptop.cambiarPrecio(5500.0);
+        System.out.println("Nuevo precio después del cambio: " + laptop.precio);
+    }
+}

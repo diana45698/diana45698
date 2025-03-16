@@ -1,0 +1,104 @@
+class Vehiculo:
+    """
+    Clase base que representa un vehículo genérico. Contiene atributos comunes
+    a todos los vehículos, como marca, modelo y año, así como un método
+    para mostrar la información básica del vehículo.
+    """
+    def __init__(self, marca, modelo, año):
+        """
+        Inicializa los atributos básicos del vehículo.
+        :param marca: Marca del vehículo (str).
+        :param modelo: Modelo del vehículo (str).
+        :param año: Año de fabricación del vehículo (int).
+        """
+        self.marca = marca
+        self.modelo = modelo
+        self.año = año
+
+    def mostrar_info(self):
+        """
+        Muestra información básica del vehículo.
+        :return: Una cadena con la información del vehículo.
+        """
+        return f"{self.marca} {self.modelo} ({self.año})"
+
+# Clase derivada Coche que hereda de Vehiculo
+class Coche(Vehiculo):
+    """
+    Clase derivada que representa un coche. Hereda de la clase base Vehiculo
+    y agrega un atributo específico de los coches: el número de puertas.
+    """
+    def __init__(self, marca, modelo, año, puertas):
+        """
+        Inicializa los atributos del coche. Llama al constructor de la clase base
+        para inicializar los atributos comunes del vehículo.
+        :param puertas: Número de puertas del coche (int).
+        """
+        super().__init__(marca, modelo, año)  # Llama al constructor de Vehiculo
+        self.puertas = puertas
+
+    def mostrar_info(self):
+        """
+        Sobrescribe el método mostrar_info de la clase base para agregar
+        información sobre las puertas del coche.
+        :return: Una cadena con la información del coche.
+        """
+        info = super().mostrar_info()  # Llama al método mostrar_info de Vehiculo
+        return f"{info}, Puertas: {self.puertas}"
+
+    def arrancar(self):
+        """
+        Método exclusivo para la clase Coche. Simula el encendido del coche.
+        :return: Una cadena indicando que el coche ha arrancado.
+        """
+        return f"El {self.marca} {self.modelo} ha arrancado."
+
+# Clase derivada Motocicleta que hereda de Vehiculo
+class Motocicleta(Vehiculo):
+    """
+    Clase derivada que representa una motocicleta. Hereda de la clase base Vehiculo
+    y agrega un atributo específico de las motocicletas: la cilindrada.
+    """
+    def __init__(self, marca, modelo, año, cilindrada):
+        """
+        Inicializa los atributos de la motocicleta. Llama al constructor de la clase base
+        para inicializar los atributos comunes del vehículo.
+        :param cilindrada: Cilindrada de la motocicleta en centímetros cúbicos (int).
+        """
+        super().__init__(marca, modelo, año)  # Llama al constructor de Vehiculo
+        self.cilindrada = cilindrada
+
+    def mostrar_info(self):
+        """
+        Sobrescribe el método mostrar_info de la clase base para agregar
+        información sobre la cilindrada de la motocicleta.
+        :return: Una cadena con la información de la motocicleta.
+        """
+        info = super().mostrar_info()  # Llama al método mostrar_info de Vehiculo
+        return f"{info}, Cilindrada: {self.cilindrada}cc"
+
+    def acelerar(self):
+        """
+        Método exclusivo para la clase Motocicleta. Simula que la motocicleta acelera.
+        :return: Una cadena indicando que la motocicleta ha acelerado.
+        """
+        return f"La motocicleta {self.marca} {self.modelo} está acelerando."
+
+
+def main():
+    """
+    Función principal para probar las clases Coche y Motocicleta.
+    Se crean objetos de ambas clases y se prueban sus métodos.
+    """
+    # Crear un objeto de la clase Coche
+    coche1 = Coche("Toyota", "Corolla", 2020, 4)
+    print(coche1.mostrar_info())  # Mostrar información del coche
+    print(coche1.arrancar())  # Mostrar el estado del coche al arrancar
+
+    # Crear un objeto de la clase Motocicleta
+    moto1 = Motocicleta("Yamaha", "MT-09", 2021, 900)
+    print(moto1.mostrar_info())  # Mostrar información de la motocicleta
+    print(moto1.acelerar())  # Mostrar el estado de la motocicleta al acelerar
+
+if __name__ == "__main__":
+    main()
